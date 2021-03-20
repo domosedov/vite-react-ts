@@ -3,7 +3,7 @@ import React, {
   DetailedHTMLProps,
   forwardRef,
 } from 'react'
-import clsx from 'clsx'
+import cs from 'clsx'
 
 type Variants = 'red' | 'green' | 'blue'
 type Sizes = 'normal' | 'big' | 'small'
@@ -45,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   return (
     <button
       ref={ref}
-      className={clsx(
+      className={cs(
         'text-white rounded-sm focus:outline-none focus-visible:outline-none outline-none active:transform active:scale-110 duration-200 focus-visible:ring-red-400 focus-visible:ring-2',
         VARIANTS_MAP[variant],
         SIZES_MAP[size],
