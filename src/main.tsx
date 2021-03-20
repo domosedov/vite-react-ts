@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
+import 'focus-visible'
 import './tailwind.css'
-import { App } from './App'
+import { App } from './components/app'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root'),
 )

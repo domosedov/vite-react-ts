@@ -16,11 +16,9 @@ const SIZES_MAP: { [key in Sizes]: string } = {
 
 const VARIANTS_MAP: { [key in Variants]: string } = {
   blue: 'bg-blue-500 hover:bg-blue-700',
-  red: 'bg-red-500 hover:bg-red-700',
+  red: 'bg-red-500 hover:bg-red-600',
   green: 'bg-green-500 hover:bg-green-700',
 }
-
-type ButtonRef = HTMLButtonElement
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -31,17 +29,16 @@ type ButtonOptions = {
   variant?: Variants
   size?: Sizes
   pulse?: boolean
-  active?: boolean
 }
 
 type Props = ButtonOptions & ButtonProps
 
-const Button = forwardRef<ButtonRef, Props>((props, ref) => {
+const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     variant = 'blue',
     size = 'normal',
     pulse = false,
-    active = false,
+    className,
     ...rest
   } = props
 
@@ -49,20 +46,16 @@ const Button = forwardRef<ButtonRef, Props>((props, ref) => {
     <button
       ref={ref}
       className={clsx(
-        'text-white rounded',
+        'text-white rounded-sm focus:outline-none focus-visible:outline-none outline-none active:transform active:scale-110 duration-200 focus-visible:ring-red-400 focus-visible:ring-2',
         VARIANTS_MAP[variant],
         SIZES_MAP[size],
         pulse && 'animate-pulse',
-        active && 'animate-spin',
+        className,
       )}
       {...rest}
     />
   )
 })
-
-Button.defaultProps = {
-  variant: 'blue',
-}
 
 Button.displayName = 'Button'
 
