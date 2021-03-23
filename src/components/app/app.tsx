@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router'
+import { Helmet } from 'react-helmet-async'
 import { useGate } from 'effector-react'
 import { AppGate, useInit } from '../../models/app'
 import * as Pages from '../../pages'
@@ -11,31 +12,36 @@ const App: FC = () => {
   useGate(AppGate)
   useEffect(() => {
     if (init) {
-      setTimeout(() => setShowLoader(false), 5000)
+      setTimeout(() => setShowLoader(false), 1000)
     }
   }, [init])
   return (
-    <div className='grid-rows-[auto,1fr,auto] grid min-h-screen'>
-      <header className='py-4 text-center text-white text-xl bg-blue-600'>
-        This is header
-      </header>
-      <main>
-        {showLoader ? (
-          <div className='flex items-center justify-center h-full bg-yellow-500'>
-            Loading.....
-          </div>
-        ) : (
-          <Routes>
-            <Route path='/' element={<Pages.Home />} />
-            <Route path='profile' element={<Pages.Profile />} />
-            <Route path='login' element={<Pages.Login />} />
-          </Routes>
-        )}
-      </main>
-      <footer className='py-4 text-center text-white text-xl bg-green-500'>
-        Footer
-      </footer>
-    </div>
+    <>
+      <Helmet>
+        <title>MY AWESOME APP</title>
+      </Helmet>
+      <div className='grid-rows-[auto,1fr,auto] grid min-h-screen'>
+        <header className='py-4 text-center text-white text-xl bg-blue-600'>
+          This is header
+        </header>
+        <main>
+          {showLoader ? (
+            <div className='flex items-center justify-center h-full bg-yellow-500'>
+              Loading.....
+            </div>
+          ) : (
+            <Routes>
+              <Route path='/' element={<Pages.Home />} />
+              <Route path='profile' element={<Pages.Profile />} />
+              <Route path='login' element={<Pages.Login />} />
+            </Routes>
+          )}
+        </main>
+        <footer className='py-4 text-center text-white text-xl bg-green-500'>
+          Footer
+        </footer>
+      </div>
+    </>
   )
 }
 
