@@ -4,6 +4,7 @@ import 'focus-visible'
 import './tailwind.css'
 import { App } from './components/app'
 import { AppProvider } from './components/app-provider'
+import './timer'
 
 ReactDOM.render(
   <StrictMode>

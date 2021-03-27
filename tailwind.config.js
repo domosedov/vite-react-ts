@@ -2,7 +2,11 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: () => ({
+        pattern: "url('/src/assets/images/pattern-16.png')",
+      }),
+    },
   },
   variants: {
     extend: {},

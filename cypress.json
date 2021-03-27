@@ -2,7 +2,7 @@
   "env": {
     "cypress/globals": true
   },
-  "baseUrl": "http://localhost:3000",
+  "baseUrl": "http://localhost:3001",
   "integrationFolder": "e2e",
   "pluginsFile": false,
   "supportFile": false,

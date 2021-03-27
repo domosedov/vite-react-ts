@@ -9,8 +9,8 @@ module.exports = {
   testEnvironment: 'jsdom',
   transform: {
     '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
-    '^.+\\.(svg|jpg|png)$': '<rootDir>/__mocks__/imageMock.ts',
-    '^.+\\.css$': '<rootDir>/__mocks__/cssMock.ts',
+    '^.+\\.(svg|jpg|png)$': '<rootDir>/config/jest/imageMock.js',
+    '^.+\\.css$': '<rootDir>/config/jest/cssMock.js',
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',

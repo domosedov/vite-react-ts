@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Button } from '../ui/button'
+import { Todos } from '../todos'
 
 const App: FC = () => {
   return (
@@ -8,8 +8,8 @@ const App: FC = () => {
         This is header
       </header>
       <main>
-        <div className='flex items-center justify-center h-full bg-red-100'>
-          <Button>Hello World</Button>
+        <div className='bg-pattern flex items-center justify-center h-full'>
+          <Todos />
         </div>
       </main>
       <footer className='py-4 text-center text-white text-xl bg-green-500'>
