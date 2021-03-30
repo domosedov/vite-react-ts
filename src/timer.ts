@@ -1,5 +1,5 @@
 import { state } from './store'
 
-setInterval(() => {
+export const interval = setInterval(() => {
   ++state.count
 }, 500)

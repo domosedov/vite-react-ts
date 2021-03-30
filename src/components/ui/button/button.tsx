@@ -3,7 +3,7 @@ import React, {
   DetailedHTMLProps,
   forwardRef,
 } from 'react'
-import cs from 'clsx'
+import cn from 'clsx'
 
 type Variants = 'red' | 'green' | 'blue'
 type Sizes = 'normal' | 'big' | 'small'
@@ -15,9 +15,9 @@ const SIZES_MAP: { [key in Sizes]: string } = {
 }
 
 const VARIANTS_MAP: { [key in Variants]: string } = {
-  blue: 'bg-blue-500 hover:bg-blue-700',
+  blue: 'bg-blue-500 hover:bg-blue-600',
   red: 'bg-red-500 hover:bg-red-600',
-  green: 'bg-green-500 hover:bg-green-700',
+  green: 'bg-green-500 hover:bg-green-600',
 }
 
 type ButtonProps = DetailedHTMLProps<
@@ -33,7 +33,10 @@ type ButtonOptions = {
 
 type Props = ButtonOptions & ButtonProps
 
-const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
+const defaultStyle =
+  'text-white rounded-sm focus:outline-none focus-visible:outline-none outline-none active:transform active:scale-110 duration-200 focus-visible:ring-red-400 focus-visible:ring-2'
+
+export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     variant = 'blue',
     size = 'normal',
@@ -45,12 +48,12 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   return (
     <button
       ref={ref}
-      className={cs(
-        'text-white rounded-sm focus:outline-none focus-visible:outline-none outline-none active:transform active:scale-110 duration-200 focus-visible:ring-red-400 focus-visible:ring-2',
+      className={cn(
+        defaultStyle,
         VARIANTS_MAP[variant],
         SIZES_MAP[size],
-        pulse && 'animate-pulse',
         className,
+        { 'animate-pulse': pulse },
       )}
       {...rest}
     />
@@ -58,5 +61,3 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
 })
 
 Button.displayName = 'Button'
-
-export { Button }
